@@ -8,7 +8,7 @@ type Props = {
 
 export default function FortuneCard({ fortune }: Props) {
     return (
-        <div className="p-4 border rounded-lg shadow-sm bg-white">
+        <div className="p-4 shadow-sm bg-white">
             <p className="text-lg">{fortune.message}</p>
         </div>
     );

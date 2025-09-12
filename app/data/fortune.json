@@ -1,14 +1,22 @@
 [
     {
         "id": 1,
-        "message": "You will debug a tricky bug with ease."
+        "type": "debugLogger",
+        "message": "Console.log is your spirit animal."
     },
     {
         "id": 2,
-        "message": "Your next commit will be legendary."
+        "type": "grasshopper",
+        "message": "You will find the missing semicolon today."
     },
     {
         "id": 3,
-        "message": "Beware of infinite loops this week."
+        "type": "futureBuilder",
+        "message": "The future is async, and so are you."
+    },
+    {
+        "id": 4,
+        "type": "epicEngineer",
+        "message": "Where others see errors, you see destiny. Nothing is impossible.",
     }
 ]
