@@ -1,15 +1,9 @@
 "use client";
 
-import { Fortune } from "@/lib/types";
-
-type Props = {
-    fortune: Fortune;
-};
-
-export default function FortuneCard({ fortune }: Props) {
+export default function FortuneCard(message: []) {
     return (
         <div className="p-4 shadow-sm bg-white">
-            <p className="text-lg">{fortune.message}</p>
+            <p className="text-lg">{message}</p>
         </div>
     );
 }
