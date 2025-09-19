@@ -1,4 +1,12 @@
-{
+export interface Fortune {
+    id: number;
+    type: string; // coderType
+    message: any;
+}
+
+export type CoderType = "grasshopper" | "debugLogger" | "futureBuilder" | "epicEngineer" | "all";
+
+export const localFortunes: Record<CoderType, string[]> = {
     "grasshopper": [
         "Console.log is your spirit animal.",
         "You will find the missing semicolon today."
@@ -16,4 +24,4 @@
         "You shall scale apps beyond imagination."
     ],
     "all": []
-}
+};
