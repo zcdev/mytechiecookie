@@ -1,10 +1,10 @@
 export interface Fortune {
     id: number;
     type: string; // coderType
-    message: any;
+    message: string[];
 }
 
-export type CoderType = "grasshopper" | "debugLogger" | "futureBuilder" | "epicEngineer" | "all";
+export type CoderType = "grasshopper" | "debugLogger" | "futureBuilder" | "epicEngineer" | "fullstackMaster";
 
 export const localFortunes: Record<CoderType, string[]> = {
     "grasshopper": [
@@ -23,5 +23,5 @@ export const localFortunes: Record<CoderType, string[]> = {
         "Your refactor will be legendary.",
         "You shall scale apps beyond imagination."
     ],
-    "all": []
+    "fullstackMaster": []
 };
