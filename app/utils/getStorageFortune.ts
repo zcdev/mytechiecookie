@@ -8,7 +8,7 @@ export function getStorageFortune(coderType: CoderType): Fortune {
     return {
         id: Date.now(),
         type: coderType,
-        message: coderType !== "all" ? [random] : allSlips ?? "No local fortune found.",
+        message: coderType !== "fullstackMaster" ? [random] : allSlips ?? "No local fortune found.",
     };
 }
 
