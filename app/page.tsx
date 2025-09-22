@@ -2,18 +2,28 @@
 import { useState } from "react";
 import { CoderType, Fortune } from "@/types/fortune";
 
-const coders = ["grasshopper", "debugLogger", "futureBuilder", "epicEngineer", "all"] as const;
+const coders = ["grasshopper", "debugLogger", "futureBuilder", "epicEngineer", "fullstackMaster"] as const;
 
 export default function HomePage() {
-  const [fortune, setFortune] = useState<Fortune | any>([]);
+  const [fortune, setFortune] = useState<Fortune | null>(null);
   const [slips, setSlips] = useState<string[]>([]);
+  const [isCoderAll, setIsCoderAll] = useState<boolean>(false);
+  const [active, setActive] = useState(false);
 
   async function handleClick(coder: CoderType) {
     const res = await fetch(`/api/fortune?coderType=${coder}`);
     const data: Fortune = await res.json();
-    setFortune(data); // ✅ sets one Fortune object
-    setSlips(data.message);
-    console.log("Fortune received:", data);
+
+    if (coder === "fullstackMaster") {
+      setSlips(data.message);
+      setIsCoderAll(true);
+    } else {
+      setFortune(data);
+      setIsCoderAll(false);
+    }
+
+    setActive(true);
+    setTimeout(() => setActive(false), 2500);
   }
 
   return (
@@ -36,13 +46,38 @@ export default function HomePage() {
           </button>
         ))}
       </div>
-      {fortune && slips.map((slip: string, idx: number) => (
-        <div key={`${fortune.type}-${idx}`} className="p-4 shadow-sm bg-white mt-4">
-          <p className="text-lg">{slip}</p>
-          <small className="text-gray-500">({fortune.type})</small>
-        </div>
-      ))
-      }
-    </main>
+      <div className="cookie-jar">
+        {isCoderAll === true ? (
+          <div>
+            {
+              slips.map((slip: string, index: number) => (
+                <div key={index} className="cookie-slip p-3 pb-2 bg-white mt-4">
+                  <div>
+                    <p className="text-lg leading-[1px]">{slip}</p>
+                  </div>
+                  <div>
+                    <small className="text-sm text-gray-500">(fullstackMaster)</small>
+                    <span className={`spark ${active ? "active" : ""}`}></span>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        ) : (
+          fortune && (
+            <div className="cookie-slip p-3 pb-2 bg-white mt-4">
+              <div>
+                <p className="text-lg leading-[1px]">{fortune?.message}</p>
+              </div>
+              <div>
+                <small className="text-sm text-gray-500">({fortune?.type})
+                </small>
+                <span className={`spark ${active ? "active" : ""}`}></span>
+              </div>
+            </div>
+          )
+        )}
+      </div>
+    </main >
   );
 }

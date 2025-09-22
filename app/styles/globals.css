@@ -44,3 +44,74 @@ img {
   50% {border-right-color: black}
   100% {border-right-color: transparent}
 }
+
+/* Base */
+.spark::before {
+  content: '✨';
+  font-size: 20px;
+  position: relative;
+  display: inline-block;
+  left: 10px;
+}
+
+.spark::after {
+  content: '✨';
+  font-size: 30px;
+  position: relative;
+  display: inline-block;
+  left: 10px;
+}
+
+/* Animation trigger */
+.spark.active::before {
+  animation: 1 sparkling 2s ease-in forwards;
+  opacity: 1;
+}
+
+.spark.active::after {
+  animation: 2 sparkling 1s ease-out forwards;
+  opacity: 1;
+}
+
+@keyframes sparkling {
+  20% {
+   opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.cookie-jar {
+  display: block;
+}
+
+.cookie-jar > div {
+  display: inline-block;
+}
+
+.cookie-slip {
+  transition: all 250ms ease-out;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4), 0 0 40px rgba(128, 128, 128, 0.1) inset;
+  display: block;
+  width: fit-content;
+}
+
+.cookie-slip > div ~ div {
+  display: block;
+}
+
+.cookie-slip p {
+  display: inline;
+}
+
+.cookie-slip:hover {
+  border-radius: 0 0 40% 0 / 0 0 30% 0;
+  box-shadow: 0px 6px 12px rgba(31, 31, 31, 0.5);
+}
