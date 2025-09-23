@@ -35,15 +35,15 @@ export default function HomePage() {
         </div>
       </header>
       <section className="pl-5 pr-5">
-        <h2 className="text-[22px]">
+        <h2 className="text-[22px] lg:dark:font-semibold dark:text-white">
           What type of coder are you? Click to reveal your fortune:
         </h2>
-        <div className="flex flex-col lg:flex-row gap-4 text-xl lg:text-base mt-5">
+        <div className="flex flex-col lg:flex-row gap-4 text-xl lg:text-base mt-3">
           {coders.map((coder) => (
             <button
               key={coder}
               onClick={() => handleClick(coder)}
-              className="px-3 py-3 lg:py-1 mb-3 lg:mb-0 border rounded bg-gray-200  lg:bg-amber-200 hover:bg-amber-200 lg:hover:bg-teal-200 focus:bg-amber-200 lg:focus:bg-teal-200"
+              className="px-3 py-3 lg:py-[7px] mb-3 lg:mb-0 border rounded bg-gray-200 lg:bg-amber-200 dark:bg-blue-900 lg:dark:bg-rose-950 hover:bg-amber-200 dark:hover:bg-gray-500 lg:hover:bg-teal-200 lg:dark:hover:bg-blue-900 focus:bg-amber-200 dark:focus:bg-gray-500 lg:focus:bg-teal-200"
             >
               {coder}
             </button>
@@ -54,12 +54,12 @@ export default function HomePage() {
             <div>
               {
                 slips.map((slip: string, index: number) => (
-                  <div key={index} className="cookie-slip p-3 pb-2 bg-white mt-6">
+                  <div key={index} className="cookie-slip p-3 pb-2 bg-white dark:bg-black mt-6">
                     <div>
                       <p className="text-lg leading-[1px]">{slip}</p>
                     </div>
                     <div>
-                      <small className="text-sm text-gray-500">(fullstackMaster)</small>
+                      <small className="text-sm text-gray-500 dark:text-gray-300">(fullstackMaster)</small>
                       <span className={`spark ${active ? "active" : ""}`}></span>
                     </div>
                   </div>
@@ -68,12 +68,12 @@ export default function HomePage() {
             </div>
           ) : (
             fortune && (
-              <div className="cookie-slip p-3 pb-2 bg-white mt-6">
+              <div className="cookie-slip p-3 pb-2 bg-white dark:bg-black mt-6">
                 <div>
                   <p className="text-lg leading-[1px]">{fortune?.message}</p>
                 </div>
                 <div>
-                  <small className="text-sm text-gray-500">({fortune?.type})
+                  <small className="text-sm text-gray-500 dark:text-gray-300">({fortune?.type})
                   </small>
                   <span className={`spark ${active ? "active" : ""}`}></span>
                 </div>
