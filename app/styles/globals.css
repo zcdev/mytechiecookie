@@ -1,93 +1,33 @@
 @import "tailwindcss";
+@import "tailwindcss/preflight.css" layer(base);
 
 :root {
   --background: #cbfbf1;
-  --foreground: #171717;
+  --foreground: #000;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #fff;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  height: 100%;
+  min-height: 100vh;
+  color: var(--foreground); 
+  background: url("/bg-sf.svg"), linear-gradient(to bottom,rgba(250, 227, 179, 1) 5%, rgba(157, 246, 228, 1) 25%, rgba(34, 193, 195, 1) 100%);
+  background-size: 105% auto;
+  background-position: right top;
+  background-repeat: no-repeat;
 }
 
 img {
   margin: 0;
 }
 
-.animated-typewriter {
-  display: inline-block;
-}
-
-.animated-banner {
-  overflow: hidden;
-  white-space: nowrap;
-  width: 0;
-  border-right: 2px solid;
-  animation: typing 2s 2s steps(30, end) forwards, blinking 1s infinite;
-}
-
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-@keyframes blinking {
-  0% {border-right-color: transparent}
-  50% {border-right-color: black}
-  100% {border-right-color: transparent}
-}
-
-/* Base */
-.spark::before {
-  content: '✨';
-  font-size: 20px;
-  position: relative;
-  display: inline-block;
-  left: 10px;
-}
-
-.spark::after {
-  content: '✨';
-  font-size: 30px;
-  position: relative;
-  display: inline-block;
-  left: 10px;
-}
-
-/* Animation trigger */
-.spark.active::before {
-  animation: 1 sparkling 2s ease-in forwards;
-  opacity: 1;
-}
-
-.spark.active::after {
-  animation: 2 sparkling 1s ease-out forwards;
-  opacity: 1;
-}
-
-@keyframes sparkling {
-  20% {
-   opacity: 0;
-  }
-  40% {
-    opacity: 1;
-  }
-  80% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
+/* Cookie Slips section */
 .cookie-jar {
   display: block;
 }
@@ -114,4 +54,101 @@ img {
 .cookie-slip:hover {
   border-radius: 0 0 40% 0 / 0 0 30% 0;
   box-shadow: 0px 6px 12px rgba(31, 31, 31, 0.5);
+}
+
+/* Typewriter animation */
+.animated-typewriter {
+  width: fit-content;
+  position: relative;
+}
+
+.animated-banner {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  border-right: 2px solid;
+  animation: typing 2s 3s steps(30, end) forwards, blinking 1s infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blinking {
+  0% {border-right-color: transparent}
+  50% {border-right-color: black}
+  100% {border-right-color: transparent}
+}
+
+/* Spark animation */
+.spark::before {
+  content: '✨';
+  font-size: 20px;
+  position: relative;
+  display: inline-block;
+  left: 10px;
+}
+
+.spark::after {
+  content: '✨';
+  font-size: 30px;
+  position: relative;
+  display: inline-block;
+  left: 10px;
+}
+
+.spark.active::before {
+  animation: 1 sparkling 2s ease-in forwards;
+  opacity: 1;
+}
+
+.spark.active::after {
+  animation: 2 sparkling 1s ease-out forwards;
+  opacity: 1;
+}
+
+@keyframes sparkling {
+  20% {
+   opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* === Mobile first responsive layout for larger screens === */
+@media (min-width: 800px) {
+  body {
+    height: 100%;
+    min-height: 100vh;
+    background: url("/bg-sf.svg"), linear-gradient(to bottom,rgba(250, 227, 179, 1) 20%, rgba(157, 246, 228, 1) 50%, rgba(34, 193, 195, 1) 100%);
+    background-size: contain;
+    background-position: right top;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+  }
+
+  main header {
+    display: inline;
+  }
+
+  main section {
+    margin-top: 6%;
+  }
+
+  .logo {
+    display: inline;
+  }
+
+  .animated-typewriter {
+    display: inline-block;
+    padding-left: 40px;
+  }
 }
