@@ -1,9 +1,16 @@
 import { Fortune } from "@/types/fortune";
 
-export function getFetchFortune(apiResponse: any, coderType: string): Fortune {
+type HFResponse = {
+    slip?: {
+        id?: number;
+        message?: string[];
+    };
+};
+
+export function getFetchFortune(apiResponse: HFResponse, coderType: string): Fortune {
     return {
         id: apiResponse.slip?.id ?? Date.now(),
         type: coderType,
-        message: apiResponse.slip?.message, // assume route provided a string
+        message: apiResponse.slip?.message ?? []
     };
 }
