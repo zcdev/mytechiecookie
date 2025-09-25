@@ -134,6 +134,9 @@ img {
     box-shadow: none;
     border: 1px solid rgba(255, 255, 255, 0.4);
   }
+  @keyframes blinking {
+    50% {border-right-color: white}
+  }
 }
 
 /* === Mobile first responsive layout for larger screens === */
