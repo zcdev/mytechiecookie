@@ -17,15 +17,15 @@ Crack open a cookie here: [mytechiecookie.com](https://mytechiecookie.com) — g
 
 ## 🛠️ Tech Stack
 - **Framework:** Next.js / React.js
-- **Language:** JavaScript/TypeScript
+- **Language:** JavaScript / TypeScript
 - **APIs / Libraries:** Hugging Face API (Model: OpenAI GTP-OSS-20b)
-- **Styling:** TailwindCSS
+- **Styling:** Tailwind CSS
 - **Deployment:** Vercel
 
 ## ✨ Features
 - Fortune cookies flavored by coder types
 - Dynamic responses powered by Hugging Face API ([openai/gpt-oss-20b:novita](https://huggingface.co/openai/gpt-oss-20b))
-- SEO-ready with meta tags, OG/Twitter cards, sitemap, and robots.txt
+- SEO-ready with meta tags, OG / Twitter cards, sitemap, and robots.txt
 - Lighthouse scores: 100 (desktop) / 92 (mobile, usability-focused trade-off)
 - Custom domain via Vercel deployment
 - Mobile-first design with dark mode support and accessible controls
@@ -44,8 +44,9 @@ cd mytechiecookie
 ## 🙏 Credits
 Background shape from [Vecteezy](https://www.vecteezy.com/) (no attribution required).
 
-📁 Repo created and maintained by [Zoe Chang](https://github.com/zcdev)     
-🥠 Made with love (and lots of cookies). Sister project of [Who Ate the Cookie 🍪](https://whoatethecookie.fun)
+📁 Repo created and maintained by [Zoe Chang](https://github.com/zcdev).    
+🥠 Made with love (and lots of cookies).        
+Sister project of [Who Ate the Cookie 🍪](https://whoatethecookie.fun).
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/zcdev/mytechiecookie)
 ![GitHub last commit](https://img.shields.io/github/last-commit/zcdev/mytechiecookie)
