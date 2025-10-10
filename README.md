@@ -42,7 +42,8 @@ git clone https://github.com/zcdev/mytechiecookie.git
 cd mytechiecookie
 ```
 ## 🙏 Credits
-Background shape from [Vecteezy](https://www.vecteezy.com/) (no attribution required).
+- **[Vecteezy](https://www.vecteezy.com/)** – Background shape image asset (no attribution required)
+- **[OpenAI's ChatGPT](https://chatgpt.com)** – Assisted with design feedback, code reviews, best practices, and copywriting
 
 📁 Repo created and maintained by [Zoe Chang](https://github.com/zcdev).    
 🥠 Made with love (and lots of cookies).        
