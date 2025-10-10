@@ -1,4 +1,4 @@
-# Techie Cookie 🥠
+# Techie Cookie 💻
 
 [![Built with Next.js](https://img.shields.io/badge/Built%20with-Next.js-000000?logo=next.js)](https://nextjs.org/)
 [![React.js](https://img.shields.io/badge/React.js-61DAFB?logo=react&logoColor=white)](https://react.dev/)
@@ -42,10 +42,11 @@ git clone https://github.com/zcdev/mytechiecookie.git
 cd mytechiecookie
 ```
 ## 🙏 Credits
-Background shape from [Vecteezy](https://www.vecteezy.com/) (no attribution required).
+- **[Vecteezy](https://www.vecteezy.com/)** – Background shape image asset (no attribution required)
 
 📁 Repo created and maintained by [Zoe Chang](https://github.com/zcdev).    
-🥠 Made with love (and lots of cookies).        
+🥠 Built with love (and lots of cookies).
+Inspired and informed through collaborative learning with ChatGPT.       
 Sister project of [Who Ate the Cookie 🍪](https://whoatethecookie.fun).
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/zcdev/mytechiecookie)
