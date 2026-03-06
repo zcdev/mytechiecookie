@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { CoderType, Fortune } from "@/types/fortune";
+import { clear } from "console";
 
 const coders = ["grasshopper", "debugLogger", "futureBuilder", "epicEngineer", "fullstackMaster"] as const;
 
@@ -15,6 +16,7 @@ export default function HomePage() {
     try {
       setIsWaiting(true); // Waiting for the response
       setIsActive(true); // Start the spark animation while waiting
+      setIsFullStackMaster(false); // Reset fullstackMaster state for new clicks
       const res = await fetch(`/api/fortune?coderType=${coder}`);
       const data: Fortune = await res.json();
 
@@ -23,9 +25,9 @@ export default function HomePage() {
         setSlips(data.message);
         setIsFullStackMaster(true);
         setIsActive(false); // Stop the spark animation after receiving the response
+        setIsWaiting(false); // Stop waiting for the response
       } else {
         setFortune(data);
-        setIsFullStackMaster(false);
         setIsActive(false); // Stop the spark animation after receiving the response
       }
     } catch (error) {
@@ -59,8 +61,8 @@ export default function HomePage() {
           ))}
         </div>
         <div className="cookie-jar mt-2 lg:mt-10 pb-10">
-          {isWaiting && (<h3 className={`text-[16px] md:text-xl spark ${isActive ? "active" : ""}`}>Waiting for your fortune...</h3>)}
-          {isFullStackMaster === true ? (
+          {isWaiting === true && isFullStackMaster === false && (<h3 className={`text-[16px] md:text-xl spark ${isActive ? "active" : ""}`}>Waiting for your fortune...</h3>)}
+          {isWaiting === false && isFullStackMaster === true && (
             <div>
               {
                 slips.map((slip: string, index: number) => (
@@ -75,18 +77,17 @@ export default function HomePage() {
                 ))
               }
             </div>
-          ) : (
-            !isWaiting && fortune && (
-              <div className="cookie-slip p-3 pb-2 bg-white dark:bg-black mt-6">
-                <div>
-                  <p className="text-lg leading-[1px]">{fortune?.message}</p>
-                </div>
-                <div>
-                  <small className="text-sm text-gray-500 dark:text-gray-300">({fortune?.type})
-                  </small>
-                </div>
+          )}
+          {isWaiting === false && isFullStackMaster === false && fortune && (
+            <div className="cookie-slip p-3 pb-2 bg-white dark:bg-black mt-6">
+              <div>
+                <p className="text-lg leading-[1px]">{fortune?.message}</p>
               </div>
-            )
+              <div>
+                <small className="text-sm text-gray-500 dark:text-gray-300">({fortune?.type})
+                </small>
+              </div>
+            </div>
           )}
         </div>
       </section>

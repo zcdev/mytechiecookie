@@ -75,31 +75,22 @@ img {
 }
 
 /* Spark animation */
-.spark::before {
+.spark::before, .spark::after {
   content: '✨';
-  font-size: 20px;
+  font-size: 30px;
   position: relative;
   display: inline-block;
   left: 0;
   padding-right: 5px;
 }
 
-.spark::after {
-  content: '✨';
-  font-size: 30px;
-  position: relative;
-  display: inline-block;
-  left: 0;
-  padding-left: 5px;
-}
-
 .spark.active::before {
-  animation: 1 sparkling 3s ease-in forwards;
+  animation: 2 sparkling 3s ease-in forwards;
   opacity: 1;
 }
 
 .spark.active::after {
-  animation: 2 sparkling 3s ease-out forwards;
+  animation: 3 sparkling 2s ease-out forwards;
   opacity: 1;
 }
 
@@ -170,22 +161,11 @@ img {
     padding-left: 40px;
   }
 
-  .spark::before {
+  .spark::before, .spark::after {
     content: '✨';
-    font-size: 40px;
+    font-size: 45px;
     position: relative;
     display: inline-block;
-    left: 0;
-    padding-right: 10px;
-  }
-  
-  .spark::after {
-    content: '✨';
-    font-size: 50px;
-    position: relative;
-    display: inline-block;
-    left: 0;
-    padding-left: 5px;
   }
 
   @media (prefers-color-scheme: dark) {
