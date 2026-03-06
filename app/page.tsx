@@ -7,23 +7,32 @@ const coders = ["grasshopper", "debugLogger", "futureBuilder", "epicEngineer", "
 export default function HomePage() {
   const [fortune, setFortune] = useState<Fortune | null>(null);
   const [slips, setSlips] = useState<string[]>([]);
-  const [isCoderAll, setIsCoderAll] = useState<boolean>(false);
-  const [active, setActive] = useState(false);
+  const [isFullStackMaster, setIsFullStackMaster] = useState<boolean>(false);
+  const [isActive, setIsActive] = useState<boolean>(false); // For spark animation
+  const [isWaiting, setIsWaiting] = useState<boolean>(false); // To track waiting state
 
   async function handleClick(coder: CoderType) {
-    const res = await fetch(`/api/fortune?coderType=${coder}`);
-    const data: Fortune = await res.json();
+    try {
+      setIsWaiting(true); // Waiting for the response
+      setIsActive(true); // Start the spark animation while waiting
+      const res = await fetch(`/api/fortune?coderType=${coder}`);
+      const data: Fortune = await res.json();
 
-    if (coder === "fullstackMaster") {
-      setSlips(data.message);
-      setIsCoderAll(true);
-    } else {
-      setFortune(data);
-      setIsCoderAll(false);
+      // If the coder is fullstackMaster, we expect an array of static and locally fetched messages (slips)
+      if (coder === "fullstackMaster") {
+        setSlips(data.message);
+        setIsFullStackMaster(true);
+        setIsActive(false); // Stop the spark animation after receiving the response
+      } else {
+        setFortune(data);
+        setIsFullStackMaster(false);
+        setIsActive(false); // Stop the spark animation after receiving the response
+      }
+    } catch (error) {
+      console.error("Error fetching fortune:", error);
+    } finally {
+      setIsWaiting(false); // Stop waiting for the response
     }
-
-    setActive(true);
-    setTimeout(() => setActive(false), 2500);
   }
 
   return (
@@ -50,7 +59,8 @@ export default function HomePage() {
           ))}
         </div>
         <div className="cookie-jar mt-2 lg:mt-10 pb-10">
-          {isCoderAll === true ? (
+          {isWaiting && (<h3 className={`text-xl spark ${isActive ? "active" : ""}`}>Waiting for your fortune...</h3>)}
+          {isFullStackMaster === true ? (
             <div>
               {
                 slips.map((slip: string, index: number) => (
@@ -60,14 +70,13 @@ export default function HomePage() {
                     </div>
                     <div>
                       <small className="text-sm text-gray-500 dark:text-gray-300">(fullstackMaster)</small>
-                      <span className={`spark ${active ? "active" : ""}`}></span>
                     </div>
                   </div>
                 ))
               }
             </div>
           ) : (
-            fortune && (
+            !isWaiting && fortune && (
               <div className="cookie-slip p-3 pb-2 bg-white dark:bg-black mt-6">
                 <div>
                   <p className="text-lg leading-[1px]">{fortune?.message}</p>
@@ -75,7 +84,6 @@ export default function HomePage() {
                 <div>
                   <small className="text-sm text-gray-500 dark:text-gray-300">({fortune?.type})
                   </small>
-                  <span className={`spark ${active ? "active" : ""}`}></span>
                 </div>
               </div>
             )

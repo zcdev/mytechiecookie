@@ -77,27 +77,29 @@ img {
 /* Spark animation */
 .spark::before {
   content: '✨';
-  font-size: 20px;
+  font-size: 40px;
   position: relative;
   display: inline-block;
-  left: 10px;
+  left: 0;
+  padding-right: 10px;
 }
 
 .spark::after {
   content: '✨';
-  font-size: 30px;
+  font-size: 50px;
   position: relative;
   display: inline-block;
-  left: 10px;
+  left: 0;
+  padding-left: 5px;
 }
 
 .spark.active::before {
-  animation: 1 sparkling 2s ease-in forwards;
+  animation: 1 sparkling 3s ease-in forwards;
   opacity: 1;
 }
 
 .spark.active::after {
-  animation: 2 sparkling 1s ease-out forwards;
+  animation: 2 sparkling 3s ease-out forwards;
   opacity: 1;
 }
 
