@@ -37,7 +37,7 @@ export default function HomePage() {
 
   return (
     <main className="grid grid-col-1">
-      <header className="p-8 space-y-4">
+      <header className="p-5 md:p-8">
         <img className="logo" src="/cookie.svg" width={220} alt="Fortune cookie" />
         <div className="animated-typewriter pt-2 md:pt-4 lg:pt-0">
           <h1 className="text-[30px] font-bold animated-banner">My Techie Cookie.</h1>
@@ -59,7 +59,7 @@ export default function HomePage() {
           ))}
         </div>
         <div className="cookie-jar mt-2 lg:mt-10 pb-10">
-          {isWaiting && (<h3 className={`text-xl spark ${isActive ? "active" : ""}`}>Waiting for your fortune...</h3>)}
+          {isWaiting && (<h3 className={`text-[16px] md:text-xl spark ${isActive ? "active" : ""}`}>Waiting for your fortune...</h3>)}
           {isFullStackMaster === true ? (
             <div>
               {
